@@ -1,0 +1,194 @@
+SQL> select ename from emp where deptno = (select deptno from emp where ename = 'MILLER');
+
+ENAME
+----------
+CLARK
+KING
+MILLER
+
+SQL> select ename from emp where sal = (select max(sal) from emp);
+
+ENAME
+----------
+KING
+
+SQL> select ename from emp where sal > (select min(sal) from emp where deptno = 30);
+
+ENAME
+----------
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+FORD
+MILLER
+
+12 rows selected.
+
+SQL> select ename from emp where job = (select job from emp where ename = 'FORD') and sal =(select sal from emp where ename = 'FORD');
+
+ENAME
+----------
+SCOTT
+FORD
+
+SQL> select ename from emp where sal = (select min(sal) from emp);
+
+ENAME
+----------
+SMITH
+
+SQL> select ename from emp where deptno = 10 and job not in(select job from emp where deptno = 30);
+
+ENAME
+----------
+KING
+
+SQL> select ename from emp where mgr = (select empno from emp where ename = 'BLAKES');
+
+no rows selected
+
+SQL> SELECT EMPNO FROM EMP WHERE ENAME = 'BLAKES';
+
+no rows selected
+
+SQL> select ename from emp where mgr = (select empno from emp where ename = 'BLAKE');
+
+ENAME
+----------
+ALLEN
+WARD
+MARTIN
+TURNER
+JAMES
+
+SQL> SELECT ENAME FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = 'CHICAGO');
+
+ENAME
+----------
+ALLEN
+WARD
+MARTIN
+BLAKE
+TURNER
+JAMES
+
+6 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE SAL > (SELECT SAL FROM EMP WHERE ENAME = 'JONES');
+
+ENAME
+----------
+SCOTT
+KING
+FORD
+
+SQL> SELECT ENAME FROM EMP WHERE SAL = (SELECT SAL FROM EMP WHERE ENAME = 'SCOTT') OR SAL = (SELECT SAL FROM EMP WHERE ENAME = 'FORD');
+
+ENAME
+----------
+SCOTT
+FORD
+
+SQL> SELECT ENAME FROM EMP WHERE JOB = (SELECT JOB FROM DEPT WHERE LOC = 'CHICAGO');
+
+ENAME
+----------
+SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+MILLER
+
+14 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE JOB = (SELECT JOB FROM EMP WHERE ENAME = 'JONES');
+
+ENAME
+----------
+JONES
+BLAKE
+CLARK
+
+SQL> SELECT ENAME FROM EMP WHERE SAL > (SELECT MIN(SAL) FROM EMP WHERE DEPTNO = 30);
+
+ENAME
+----------
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+FORD
+MILLER
+
+12 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE SAL > (SELECT MAX(SAL) FROM EMP WHERE DEPTNO = 30);
+
+ENAME
+----------
+JONES
+SCOTT
+KING
+FORD
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+
+SQL> SELECT ENAME FROM EMP WHERE DEPTNO =(SELECT DEPTNO FROM DEPT WHERE LOC = 'CHICAGO');
+
+ENAME
+----------
+ALLEN
+WARD
+MARTIN
+BLAKE
+TURNER
+JAMES
+
+6 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE JOB IN (SELECT JOB FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = 'CHICAGO'));
+
+ENAME
+----------
+TURNER
+MARTIN
+WARD
+ALLEN
+CLARK
+BLAKE
+JONES
+MILLER
+JAMES
+ADAMS
+SMITH
+
+11 rows selected.
