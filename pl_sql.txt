@@ -1,0 +1,290 @@
+declare
+
+v_ename emp.ename%type;
+v_job v_ename%type;
+v_sal emp.sal%type;
+v_empno emp.empno%type:=&v_empno;
+
+begin
+	select ename, job, sal into
+	v_ename, v_job, v_sal
+
+from emp
+where empno = v_empno;
+	dbms_output.put_line(v_ename||v_jobs||v_empno);
+end;
+
+
+
+SQL> create sequence sq_1
+  2  start with 1
+  3  increment by 1
+  4  minvalue 0
+  5  maxvalue 100;
+
+Sequence created.
+
+  1  declare
+  2   v_new_id number;
+  3  begin
+  4   v_new_id:=sq_1.nextval;
+  5   dbms_output.put_line('value '||v_new_id);
+  6* end;
+SQL> /
+value 2
+
+
+  1  begin <<outer>>
+  2  declare
+  3     v_father_name varchar2(20):='patric';
+  4     v_date_of_birth date:='20-apr-1972';
+  5  begin
+  6     declare
+  7             v_child_name varchar2(20):='mike';
+  8             v_date_of_birth date:='12-dec-2002';
+  9     begin
+ 10             dbms_output.put_line('Father''s name : '||v_father_name);
+ 11             dbms_output.put_line('Date of birth : '||outer.v_date_of_birth);
+ 12             dbms_output.put_line('child''s name : '||v_child_name);
+ 13             dbms_output.put_line('Date of birth : '||v_date_of_birth);
+ 14     end;
+ 15  end;
+ 16* end outer;
+SQL> /
+Father's name : patric
+Date of birth : 20-APR-72
+child's name : mike
+Date of birth : 12-DEC-02
+
+
+  1  declare
+  2     v_myage number:=31;
+  3  begin
+  4     if v_myage < 11 then
+  5             dbms_output.put_line('i am a child');
+  6     elsif v_myage < 20 then
+  7             dbms_output.put_line('i am young');
+  8     elsif v_myage < 30 then
+  9             dbms_output.put_line('i am in my twenties');
+ 10     elsif v_myage < 40 then
+ 11             dbms_output.put_line('i am in my thirties');
+ 12     else
+ 13             dbms_output.put_line('i am always young');
+ 14     end if;
+ 15* end;
+SQL> /
+i am in my thirties
+
+  1  declare
+  2     v_counter number(2):= 1;
+  3  begin
+  4     for i in 1..5 loop
+  5     for j in 1..i loop
+  6             dbms_output.put('*');
+  7     end loop;
+  8             dbms_output.put_line(' ');
+  9     end loop;
+ 10* end;
+SQL> /
+*
+**
+***
+****
+*****
+
+
+  1  declare
+  2     v_counter number(2):= 1;
+  3  begin
+  4     while v_counter <= 10 loop
+  5             dbms_output.put_line(v_counter);
+  6             v_counter := v_counter + 1;
+  7     end loop;
+  8* end;
+SQL> /
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+  1  declare
+  2  v_emp emp%rowtype;
+  3  v_empno emp.empno%type:=&v_empno;
+  4  begin
+  5     select * into v_emp
+  6     from emp
+  7     where empno = v_empno;
+  8     dbms_output.put_line(v_emp.ename||' '||v_emp.sal);
+  9* end;
+SQL> /
+Enter value for v_empno: 7900
+old   3: v_empno emp.empno%type:=&v_empno;
+new   3: v_empno emp.empno%type:=7900;
+JAMES 950
+
+
+SQL> create table t1 (salary number(10), name varchar2(10));
+
+Table created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  declare
+  2  v_emp emp%rowtype;
+  3  v_empno emp.empno%type:=&v_empno;
+  4  begin
+  5     select * into v_emp
+  6     from emp
+  7     where empno = v_empno;
+  8     insert into t1 values(v_emp.sal, v_emp.ename);
+  9     dbms_output.put_line(v_emp.ename||' '||v_emp.sal);
+ 10* end;
+SQL> /
+Enter value for v_empno: 7900
+old   3: v_empno emp.empno%type:=&v_empno;
+new   3: v_empno emp.empno%type:=7900;
+JAMES 950
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from t1;
+
+    SALARY NAME
+---------- ----------
+       950 JAMES
+
+
+
+  1  declare
+  2  cursor c1 is select ename, sal from emp
+  3  where deptno=10;
+  4  v_name emp.ename%type;
+  5  v_sal emp.sal%type;
+  6  begin
+  7  open c1;loop
+  8  fetch c1 into v_name, v_sal;
+  9  exit when c1%notfound;
+ 10  dbms_output.put_line(v_name||v_sal);
+ 11  end loop;
+ 12  close c1;
+ 13* end;
+ 14  /
+CLARK2450
+KING5000
+MILLER1300
+
+  1  declare
+  2  cursor c1 is select * from emp
+  3  where deptno=10;
+  4  v_emprec emp%rowtype;
+  5  begin
+  6  open c1;
+  7  loop
+  8  fetch c1 into v_emprec;
+  9  exit when c1%notfound;
+ 10  dbms_output.put_line(v_emprec.ename||v_emprec.sal);
+ 11  end loop;
+ 12  close c1;
+ 13* end;
+SQL> /
+CLARK2450
+KING5000
+MILLER1300
+
+
+  1  begin
+  2     for ord_record in (select empno, hiredate from emp where deptno = 30)
+  3     loop
+  4     dbms_output.put_line( ord_record.empno ||' '||ord_record.hiredate);
+  5     end loop;
+  6* end;
+  7  /
+7499 20-FEB-81
+7521 22-FEB-81
+7654 28-SEP-81
+7698 01-MAY-81
+7844 08-SEP-81
+7900 03-DEC-81
+
+
+
+  1  declare
+  2     cursor c_ord_cursor is
+  3     select empno, hiredate from emp
+  4     where deptno = 10;
+  5  begin
+  6     for ord_record in c_ord_cursor
+  7     loop
+  8     dbms_output.put_line( ord_record.empno ||' '||ord_record.hiredate);
+  9     end loop;
+ 10* end;
+SQL> /
+7782 09-JUN-81
+7839 17-NOV-81
+7934 23-JAN-82
+
+
+  1  declare
+  2  cursor c1(v_deptno number, v_job varchar2) is select * from emp
+  3  where deptno = v_deptno
+  4  and job=v_job;
+  5  v_emprec emp%rowtype;
+  6  begin
+  7  if not c1%isopen then
+  8  open c1(&v_deptno,'&v_job');
+  9  end if;
+ 10  loop
+ 11  fetch c1 into v_emprec;
+ 12  exit when c1%notfound;
+ 13  dbms_output.put_line(v_emprec.ename||v_emprec.job);
+ 14  end loop;
+ 15  close c1;
+ 16* end;
+
+Enter value for v_deptno: 30
+Enter value for v_job: SALESMAN
+old   8: open c1(&v_deptno,'&v_job');
+new   8: open c1(30,'SALESMAN');
+ALLENSALESMAN
+WARDSALESMAN
+MARTINSALESMAN
+TURNERSALESMAN
+
+
+  1  declare
+  2  v_deptno emp.deptno%type:=&v_deptno;
+  3  v_ename emp.ename%type;
+  4  begin
+  5  select ename into v_ename
+  6  from emp
+  7  where deptno=v_deptno;
+  8  exception
+  9  when too_many_rows then
+ 10  dbms_output.put_line('many rows');
+ 11  when no_data_found then
+ 12  dbms_output.put_line('no value');
+ 13* end;
+SQL> /
+Enter value for v_deptno: 40
+old   2: v_deptno emp.deptno%type:=&v_deptno;
+new   2: v_deptno emp.deptno%type:=40;
+no value
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for v_deptno: 10
+old   2: v_deptno emp.deptno%type:=&v_deptno;
+new   2: v_deptno emp.deptno%type:=10;
+many rows
+
+
+
