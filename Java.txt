@@ -1,0 +1,187 @@
+import java.util.Scanner;
+class Box{
+	int a;
+	int b;
+	
+	Box(int a, int b){
+		this.a = a;
+		this.b = b;
+	}
+	
+	int product() {
+		return a*b;
+	}
+}
+
+public class Example {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the values of a and b");
+		int c = sc.nextInt();
+		int d = sc.nextInt();
+		Box b1 = new Box(c,d);
+		System.out.println(b1.product());
+	}
+
+}
+
+
+
+
+Question 1:
+
+
+public class Part {
+	public static void part1() {
+		for(int i = 1; i <=5; i++) {
+			for(int j = 1; j<=i; j++) {
+				if ((i%2)==0)
+					System.out.print("*");
+				else
+					System.out.print("+");
+			}
+			System.out.println(" ");
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		part1();
+	}
+
+}
+
+
+Question 2:
+
+class Obj{
+	static int count=0;
+	Obj(){
+		count = count + 1;
+	}
+	static void display() {
+		System.out.println(count);
+	}
+	
+}
+public class Question2 {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Obj o = new Obj();
+		
+		Obj b = new Obj();
+		Obj.display();
+		
+	}
+
+}
+
+
+Question 3:
+
+import java.util.Scanner;import java.util.Scanner;
+class Min{
+	int a;
+	int b;
+	int c;
+	
+	Min(int a, int b, int c){
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+	
+	int find_min() {
+		if (a<b)
+		{
+			if(a<c)
+				return a;
+			else
+				return c;
+		}
+		else
+		{
+			if (b<c)
+				return b;
+			else
+				return c;
+		}
+	}
+}
+
+Question 4:
+
+public class Question4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the values of a and b");
+		int c = sc.nextInt();
+		int d = sc.nextInt();
+		int e = sc.nextInt();
+		Min b1 = new Min(c,d,e);
+		System.out.println(b1.find_min());
+	}
+
+}
+
+
+Question 5:
+
+import java.util.Scanner;
+class Fac{
+	int a;
+	
+	
+	Fac(int a){
+		this.a = a;
+		
+	}
+	
+	int product() {
+		int b = 1;
+		for (int i=1;i<=a;i++)
+		{
+			b=b*i;
+		}
+		return b;
+	}
+}
+
+public class Fact {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the values of a");
+		int c = sc.nextInt();
+		
+		Fac b1 = new Fac(c);
+		System.out.println(b1.product());
+	}
+
+}
+
+Question 6:
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Formatter;
+
+public class DateTime {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SimpleDateFormat a = new SimpleDateFormat("DD-MM-YYYY  HH:MM:SS");
+		Date date = new Date();
+		System.out.println(a.format(date));
+
+	}
+
+}
+
