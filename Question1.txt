@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class Account{
+	float balance_amt = 0;
+	int Accno;
+	String name;
+	int Phone_no;
+	
+	
+	void getinput(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the account number");
+		Accno = sc.nextInt();
+		name = sc.next();
+		Phone_no = sc.nextInt();
+		
+		
+	}
+	
+	void deposit(int amt) {
+		balance_amt = balance_amt + amt;
+		System.out.println("Balance is " +balance_amt);
+	}
+	
+	void withdraw(int amt) {
+		balance_amt = balance_amt - amt;
+		System.out.println("Balance is " +balance_amt);
+	}
+}
+public class Problem1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the details");
+		Account a = new Account();
+		a.getinput();
+		System.out.println("Enter the ammount to b deposited");
+		int amt = sc.nextInt();
+		a.deposit(amt);
+		System.out.println("Enter the ammount to withdraw");
+		int am = sc.nextInt();
+		a.withdraw(am);
+		
+	}
+
+}
