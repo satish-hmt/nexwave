@@ -1,0 +1,44 @@
+import java.util.Scanner;
+class book_info{
+	String title;
+	String author;
+	int cost;
+	int no_of_books;
+    
+     
+	
+}
+
+public class Question3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		book_info a[] = new book_info[3];
+		for(int i=0;i<3;i++) {
+			System.out.println("Enter the details of Book "+(i+1));
+			a[i] = new book_info();
+			a[i].title = sc.next();
+			a[i].author = sc.next();
+			a[i].cost = sc.nextInt();
+			a[i].no_of_books = sc.nextInt();
+			}
+		System.out.println("Enter the book name and number to be searched");
+		String b = sc.next();
+		int n = sc.nextInt();
+		int c = 0;
+		int d=0;
+	for(int j = 0; j<3;j++) {
+		if(a[j].title.equals(b) && a[j].no_of_books > n)
+			c+=1;
+			d = j;
+	}
+	if(c>0) {
+		System.out.println("Total Cost is: "+n*a[d].cost);
+	}
+	else
+		System.out.println("Book not found");
+		
+	}
+
+}
