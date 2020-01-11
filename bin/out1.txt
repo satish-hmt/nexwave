@@ -1,0 +1,8 @@
+10
+python
+satish
+10
+python
+satish
+20
+java

@@ -38,3 +38,15 @@ while K < len(L):
     K = K + 1
     print('Last stmt of while')
 
+
+cart = []
+while True:
+    i = input('Enter Item:')
+    cart.append(i)
+    ch = input('Quit(Y/N)?: ')
+    if ch == 'y':
+        print('cart =', cart)
+        break
+
+
+

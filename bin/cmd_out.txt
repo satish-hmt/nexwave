@@ -1,0 +1,40 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 165F-FC56
+
+ Directory of C:\Users\lab365\Desktop\satish_python\bin
+
+01/07/2020  09:51 PM    <DIR>          .
+01/07/2020  09:51 PM    <DIR>          ..
+01/07/2020  09:49 PM                 0 cmd_out.txt
+01/07/2020  08:15 PM               708 comprehensions.py
+01/06/2020  03:17 AM               415 dictionary_ex.py
+01/07/2020  12:44 AM               398 eval_ex.py
+01/07/2020  01:50 AM             3,063 file_ops.py
+01/06/2020  10:46 PM             2,535 for_ex.py
+01/07/2020  08:50 PM               404 funcs_1.py
+01/07/2020  08:50 PM               397 funcs_2.py
+01/07/2020  08:56 PM               464 funcs_3.py
+01/07/2020  09:37 PM               472 funcs_4.py
+01/07/2020  09:51 PM               701 funcs_5.py
+01/06/2020  09:04 PM             1,221 if_ex.py
+01/06/2020  03:26 AM             1,490 list_ex.py
+01/07/2020  02:21 AM               487 log_report.csv
+01/07/2020  02:21 AM               490 log_report.txt
+01/05/2020  10:26 PM               996 num_ex.py
+01/07/2020  01:50 AM                50 out1.txt
+01/07/2020  01:50 AM                36 out2.csv
+01/07/2020  02:21 AM             1,038 process_ex.py
+01/06/2020  03:34 AM               502 set_ex.py
+01/06/2020  01:05 AM             3,267 str_ex.py
+01/05/2020  08:35 PM                26 test.py
+01/06/2020  02:57 AM               576 tuple_ex.py
+01/07/2020  12:38 AM               820 while_ex.py
+              24 File(s)         20,556 bytes
+               2 Dir(s)  856,333,770,752 bytes free
+IPDATEPICSURL
+123.123.123.123,26/Apr/2000,wpaper.gif,http://www.jafsoft.com/asctortf/
+123.123.123.123,26/Apr/2000,no image,http://search.netscape.com/Computers/Data_Formats/Document/Text/RTF
+123.123.123.123,26/Apr/2000,5star2000.gif,http://www.jafsoft.com/asctortf/
+123.123.123.123,26/Apr/2000,5star.gif,http://www.jafsoft.com/asctortf/
+123.123.123.123,26/Apr/2000,a2hlogo.jpg,http://www.jafsoft.com/asctortf/
+123.123.123.123,26/Apr/2000,no image,http://www.jafsoft.com/asctortf/
